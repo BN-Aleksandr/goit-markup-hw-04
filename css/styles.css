@@ -8,6 +8,8 @@
     --bg-color-black: #2F303A;
     --bg-color-gray: #F5F4FA;
     --bg-color-white: #FFFFFF;
+    --bg-hero-cl: #C4C4C4;
+    --bg-filter: rgba(47, 48, 58, 0.4);
 
     --card-bg-color: #FFFFFF;
 
@@ -17,6 +19,14 @@
 
     --header-border-cl: #ECECEC;
     --portfolio-border-cl: #EEEEEE;
+
+    --social-link-cl: #AFB1B8;
+    --social-link-hover-cl: #FFFFFF;
+    --bg-socials-cl: rgba(255, 255, 255, 0.1);
+    --client-link-cl: #AFB1B8;
+
+    --items: 3;
+    --indent: 30px;
 }
 
 /* Global styles start */
@@ -83,10 +93,58 @@ p {
 
 .title {
     font-weight: 700;
+    margin-bottom: 50px;
+
     font-size: 36px;
     line-height: calc(42/36);
-    text-align: center;
     letter-spacing: 0.03em;
+
+    text-align: center;
+}
+
+.card-set {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--indent);
+}
+
+.card {
+    flex-basis: calc((100% - (var(--items) - 1) * var(--indent)) / var(--items));
+}
+
+/* list of social links */
+.socials-list {
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+
+}
+
+.socials-item {
+    display: flex;
+    width: 44px;
+    height: 44px;
+
+    color: var(--social-link-cl);
+    border-radius: 50%;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.socials-item:hover,
+.socials-item:focus {
+    background-color: var(--accent-color);
+    color: var(--social-link-hover-cl);
+}
+
+.socials-link {
+    height: 20px;
+    color: currentColor;
+}
+
+.socials-icon {
+    fill: currentColor;
 }
 
 /* Global styles end */
@@ -176,6 +234,12 @@ p {
     color: var(--accent-color);
 }
 
+.contacts-icon {
+    margin-right: 10px;
+    fill: currentColor;
+    vertical-align: middle;
+}
+
 /* Header end */
 
 .main {}
@@ -183,11 +247,16 @@ p {
 
 /* Hero section start */
 .hero-section {
+    width: 1600px;
     padding-top: 200px;
     padding-bottom: 200px;
+    margin: 0 auto;
     text-align: center;
+    background-color: var(--bg-hero-cl);
+    background-image:
+        linear-gradient(var(--bg-filter), var(--bg-filter)),
+        url("../images/main/bg-picture.jpg");
 
-    background-color: var(--bg-color-black);
 }
 
 .hero-title {
@@ -239,12 +308,24 @@ p {
 .benefits-title {}
 
 .benefits-list {
-    display: flex;
+    --items: 4;
 }
 
-.benefits-card {
-    width: calc((100% - 3*30px)/4);
+.benefits-card {}
+
+.icon-wrapper {
+    display: flex;
+    width: 100%;
+    height: 120px;
+    margin-bottom: 30px;
+
+    background-color: var(--bg-color-gray);
+
+    justify-content: center;
+    align-items: center;
 }
+
+.benefits-icon {}
 
 .benefits-card-title {
     margin-top: 0;
@@ -255,10 +336,6 @@ p {
     line-height: 1.14;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-}
-
-.benefits-card:not(:last-child) {
-    margin-right: 30px;
 }
 
 .benefits-card-descr {
@@ -276,27 +353,21 @@ p {
 }
 
 
-.jobs-section-title {
-    text-align: center;
-    margin-bottom: 50px;
-}
+.jobs-section-title {}
 
-.jobs-list {
-    display: flex;
-    margin-left: -15px;
-    /* gap: 30px; */
-}
+.jobs-list {}
 
 .jobs-card-link {}
 
-.jobs-card {
-    width: calc((100% - 2*15px)/3);
-    margin-left: 15px;
-    margin-right: 15px;
-}
+.jobs-card {}
 
 .jobs-image {
     display: block;
+
+    max-width: 100%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* Jobs section end */
@@ -309,18 +380,13 @@ p {
     background-color: var(--bg-color-gray);
 }
 
-.our-team-title {
-    margin-bottom: 50px;
-    text-align: center;
-}
+.our-team-title {}
 
 .team-list {
-    display: flex;
+    --items: 4;
 }
 
 .team-card {
-    width: calc((100% - 3*30px)/4);
-
     background-color: var(--card-bg-color);
 
     border-radius: 0px 0px 4px 4px;
@@ -330,12 +396,14 @@ p {
         0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.team-card:not(:last-child) {
-    margin-right: 30px;
-}
 
 .team-card-image {
     display: block;
+
+    max-width: 100%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .team-card-wrapper {
@@ -355,6 +423,7 @@ p {
 }
 
 .team-card-descr {
+    margin-bottom: 16px;
     line-height: 1.19;
     letter-spacing: 0.03em;
     text-align: center;
@@ -363,11 +432,57 @@ p {
 
 /* Our team section end */
 
+/* Clients section start */
+
+
+.clients-list {
+    --items: 6;
+}
+
+.clients-list-item {}
+
+.clients-link {
+    display: flex;
+    height: 92px;
+    width: 100%;
+
+    color: var(--client-link-cl);
+    border: 1px solid var(--client-link-cl);
+    border-radius: 4px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.clients-link:hover,
+.clients-link:focus {
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+
+.clients-icon {
+
+
+    fill: currentColor;
+}
+
+/* Clients section end */
+
 /* Footer start */
 .footer {
+    display: flex;
     padding-top: 60px;
     padding-bottom: 60px;
     background-color: var(--bg-color-black);
+}
+
+.footer>.container {
+    display: flex;
+}
+
+.address-wrapper {
+    margin-right: 70px;
 }
 
 .footer-logo {
@@ -417,6 +532,33 @@ p {
     color: var(--accent-color);
 }
 
+.footer-socials {
+    width: 206px;
+    padding-top: 12px;
+
+    color: var(--text-color-white);
+}
+
+.footer-socials-text {
+    margin-bottom: 20px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: calc(16 / 14);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.footer-socials-item {
+    background-color: var(--bg-socials-cl);
+    color: currentColor;
+}
+
+.socials-list-item:hover,
+.socials-list-item:focus {
+    background-color: var(--accent-color);
+}
+
 /* Footer end */
 
 
@@ -462,6 +604,12 @@ p {
 .filters-btn:hover {
     color: var(--text-color-white);
     background-color: var(--accent-color);
+
+    box-shadow:
+        0px 3px 1px rgba(0, 0, 0, 0.1),
+        0px 1px 2px rgba(0, 0, 0, 0.08),
+        0px 2px 2px rgba(0, 0, 0, 0.12);
+
 }
 
 .portfolio-list {
@@ -469,8 +617,12 @@ p {
     flex-wrap: wrap;
 }
 
-.portfolio-card {
-    width: calc((100% - 2*30px)/3);
+.portfolio-card:hover,
+.portfolio-card:focus {
+    box-shadow:
+        0px 1px 1px rgba(0, 0, 0, 0.12),
+        0px 4px 4px rgba(0, 0, 0, 0.06),
+        1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
 .portfolio-card-wrapper {
@@ -483,13 +635,6 @@ p {
     border-top: none;
 }
 
-.portfolio-card:not(:nth-child(3n)) {
-    margin-right: 30px;
-}
-
-.portfolio-card:not(:nth-last-child(-n+3)) {
-    margin-bottom: 30px;
-}
 
 .portfolio-card-link {}
 
@@ -499,6 +644,11 @@ p {
 
 .portfolio-card-image {
     display: block;
+
+    max-width: 100%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .portfolio-card-title {
