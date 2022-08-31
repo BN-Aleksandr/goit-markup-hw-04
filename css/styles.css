@@ -601,7 +601,8 @@ p {
     border-radius: 4px;
 }
 
-.filters-btn:hover {
+.filters-btn:hover,
+.filters-btn:focus {
     color: var(--text-color-white);
     background-color: var(--accent-color);
 
